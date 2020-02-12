@@ -1,11 +1,12 @@
-import { Component, HostListener } from '@angular/core';
-
+import { Component, HostListener, OnInit } from '@angular/core';
+// declare var $: any;
+import * as $ from 'jquery';
 @Component({
   selector: 'app-root',
-  template: '<button (click)="addToHomeScreen()" *ngIf="showButton">Add to Home Scree</button>',
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   deferredPrompt: any;
   showButton = false;
@@ -20,6 +21,11 @@ export class AppComponent {
     this.showButton = true;
   }
 
+  ngOnInit() {
+    setTimeout(() => {
+      $('#addBtn').click();
+    }, 5000);
+  }
 
   addToHomeScreen() {
     // hide our user interface that shows our A2HS button
